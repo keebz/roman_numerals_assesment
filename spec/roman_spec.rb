@@ -11,4 +11,7 @@ describe ('roman_numeral') do
 	it("takes a number between 1 and 9 and returns its roman numeral") do
 		roman_numeral(9).should(eq("ix"))
 	end
+	it("takes a double digit number ending in zero and returns its roman numeral") do
+		roman_numeral(20).should(eq("ix"))
+	end
 end

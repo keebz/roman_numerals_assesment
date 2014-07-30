@@ -1,24 +1,46 @@
 def roman_numeral(number)
-	roman_conversion = {
-		1000 => "m", 900 => "cm", 500 => "4", 400 => "cd",
-		100 => "c", 90 => "xc", 50 => "l", 40 => "xl",
-		10 => "x", 9 => "ix", 5 => "v", 4 => "iv",
-		1 => "i"
-	}
-	numeral = []
-	if roman_conversion.has_key?(number)
-		roman_conversion[number]
-	else
-		until number == 0
-		roman_conversion.each do |integer, roman|
-			if number >= integer
-				numeral.push(roman)
-				number = number - integer
-			end
-		end
-	end
-	numeral.to_s
+	roman_conversion = {"m" => 1000, "cm" => 900, "d" => 500, "cd" => 400, "c" => 100, "xc" => 90, "l" => 50, "xl" => 40, "x" => 10, "ix" => 9, "v" => 5, "iv" => 4, "i" => 1}
+
+number_array = []
+
+  roman_conversion.each do |letter, value|
+  	next_number = (number / value)
+    
+    if next_number >= 1 
+       number_array << letter * next_number
+       number = (number - value) 
+    end
+  end
+  result = number_array.join("")
+  result	
+
+
+
+	# broken_number = number.to_s.split("")
+	# numeral = []
+	# if roman_conversion.has_key?(number)
+	# 	roman_conversion[number]
+	# else number > 10 && broken_number[1] == 0
+	# 	until broken_number[0].to_i == 0
+	# 		roman_conversion.each do |integer, roman|
+	# 		if broken_number[0].to_i >= integer
+	# 			numeral.push(roman)
+	# 			broken_number[0].to_i = broken_number[0]to_i - integer
+	# 		end
+	# 	end
+	# end
+	# else
+	# 	until number == 0
+	# 	roman_conversion.each do |integer, roman|
+	# 		if number >= integer
+	# 			numeral.push(roman)
+	# 			number = number - integer
+	# 		end
+	# 	end
+	# end
+	# puts numeral.to_s
+
 end
-end
-puts roman_numeral(9)
-roman_numeral(5)
+puts roman_numeral(20)
+roman_numeral(20)
+
